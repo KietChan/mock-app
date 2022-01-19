@@ -37,7 +37,7 @@ app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  if (req.method === 'POST') {
+  if (req.method !== 'GET') {
     let data = req.body
     data.__origin_url = req.protocol + '://' + req.get('host') + req.originalUrl;
     writeRequest(JSON.stringify(data))
