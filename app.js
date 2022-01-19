@@ -40,6 +40,7 @@ app.use(function(req, res, next) {
   if (req.method !== 'GET') {
     let data = req.body
     data.__origin_url = req.protocol + '://' + req.get('host') + req.originalUrl;
+    data.__request_method = req.method;
     writeRequest(JSON.stringify(data))
     res.json({code: 200, message: "log created"});
   } else {
